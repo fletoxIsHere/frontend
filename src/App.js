@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import AddProductForm from './components/AddProductForm';
+import Home from './components/Home';
+import ProductList from './components/ProductList';
+import {Routes, Route, Link} from "react-router-dom";
+import UpdateProductForm from './components/updateProductForm';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>    
+    <nav>
+      <ul>
+      <li><Link to="/">Accueil</Link></li>
+      <li><Link to="/products">Produits</Link></li>
+      <li><Link to="/products/add">AjouterProduit</Link></li>
+      </ul>
+    </nav>
+
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/products" element={<ProductList/>}/>
+      <Route path="/products/add" element={<AddProductForm/>}/>
+      <Route path="/products/update/:id" element={<UpdateProductForm/>}/>
+    </Routes>
+    </>
   );
 }
 
